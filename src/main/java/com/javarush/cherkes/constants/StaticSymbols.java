@@ -6,10 +6,6 @@ import java.util.Set;
 
 public class StaticSymbols {
 
-//    private static final String ENG = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-//    private static final String CHARACTERS = "!@#$%^&*()-=_+[]{}|;:',.<>?/";
-//    private static final String NUMBERS = "1234567890";
-
     private static Map<Character, Integer> allCharacters = fillDictionary();
     public static final int DOWN_INDEX_OF_ASCII = 32;
     public static final int UPPER_INDEX_OF_ASCII = 126;
@@ -17,7 +13,7 @@ public class StaticSymbols {
 
     private static Map<Character, Integer> fillDictionary() {
         Map<Character, Integer> dictionary = new HashMap<>();
-        for (int i = DOWN_INDEX_OF_ASCII; i < UPPER_INDEX_OF_ASCII; i++) {
+        for (int i = DOWN_INDEX_OF_ASCII; i <= UPPER_INDEX_OF_ASCII; i++) {
             dictionary.put((char) i, i);
         }
         return dictionary;

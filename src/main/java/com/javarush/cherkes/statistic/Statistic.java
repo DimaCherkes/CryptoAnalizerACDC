@@ -6,7 +6,6 @@ package com.javarush.cherkes.statistic;
  */
 
 
-import com.javarush.cherkes.Exceptions.InvalidDeviation;
 import com.javarush.cherkes.constants.StaticSymbols;
 
 public class Statistic {
@@ -37,55 +36,23 @@ public class Statistic {
         return table;
     }
 
-    public static boolean compareTables(int[][] table1, int[][] table2, double acceptableDeviation) throws InvalidDeviation {
-        if (acceptableDeviation > 1 || acceptableDeviation < 0) {
-            throw new InvalidDeviation();
-        }
-        double[] attitude = new double[table1.length * table1.length];
-        int index = 0;
-        int counterForZero = 0;
+    public static boolean compareTables(int[][] table1, int[][] table2) {
+
+        int bothAreNotZero = 0;
+        int oneIsNotZero = 0;
         for (int i = 0; i < table1.length; i++) {
             for (int j = 0; j < table1[0].length; j++) {
-                if (table1[i][j] == 0 || table2[i][j] == 0) {
-                    counterForZero++;
-                    index++;
-                    continue;
+                if (table1[i][j] != 0 && table2[i][j] != 0) {
+                    bothAreNotZero++;
+                } else if ((table1[i][j] == 0 && table2[i][j] != 0) ||
+                        ((table1[i][j] != 0 && table2[i][j] == 0))){
+                    oneIsNotZero++;
                 }
-                attitude[index] = (double) table1[i][j] / table2[i][j];
-                index++;
             }
         }
-        double sum = 0;
-        for (double v : attitude) {
-            sum += v;
-        }
+        double relations = (double) bothAreNotZero / oneIsNotZero;
 
-        double averageValue = sum / (attitude.length - counterForZero);
-
-        int counter = 0;
-        int sufficientAmount = (int) ((attitude.length - counterForZero) * acceptableDeviation);
-        for (int i = 0; i < attitude.length; i++) {
-            if (isWithinPercentageDifference(attitude[i], averageValue, 1 - acceptableDeviation)) {
-                counter+=1;
-            }
-            if (counter >= sufficientAmount) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static boolean isWithinPercentageDifference(double number1, double number2, double maxPercentageDifference) {
-        if (number1 == 0 && number2 == 0) {
-            // Обрабатываем случай, когда оба числа равны нулю
-            return true;
-        }
-
-        // Рассчитываем процентное отличие
-        double percentageDifference = Math.abs((number1 - number2) / number1);
-
-        // Проверяем, что процентное отличие не превышает заданный порог
-        return percentageDifference <= maxPercentageDifference;
+        return 1 < relations;
     }
 
 }
