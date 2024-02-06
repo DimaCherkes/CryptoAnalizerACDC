@@ -1,51 +1,28 @@
-<h1>Криптоанализатор</h1>
+<h1>Text Encryption and Decryption</h1>
 
-_(пример для группы ACDC)_
+### __Project Description:__
 
-__Будет полезно для подготовки к модулю 2.__
+The project is a program for encrypting and decrypting text using various methods such as character substitution and frequency analysis. 
+It includes classes for text manipulation, encryption keys, and file paths.
 
-Ребята и девчата, всем привет! Вот и наш первый проект. 
-Надеюсь вам понравится, все-таки свобода в принятии решений - 
-это самое интересное и приятное в работе разработчика.
-
-Тут я набросал примерную демоверсию нашего проекта.
-Код местами относительно сложный (не пугайтесь), 
-т.к. я хотел покрыть все уровни подготовки в группе, 
-но зато можно "подсмотреть" какие-то решения, 
-но я советую по возможности не копировать.
-
-Главная мотивация и бонус в том, что именно этот проект разобран в видео на сайте JRU.
-
-Итак, поехали. Вам нужно:
-1. Клонировать этот репозиторий <a href="https://github.com/demologin/CryptoAnalizerACDC/fork">[FORK]</a>
-2. Скачать из своего репозитория полученную копию
-3. Добавить пакет на основе своей фамилии ***lastname*** маленькими(!) буквами по пути */src/main/java/com/javarush/**lastname***.
-4. Придумать и разместить в нем свое решение (а вот тут уже полная свобода действий)
-5. Сдать проект (нужно будет заполнить форму и прислать мне Pull Request на проверку)
+### **Project Structure:**<br>
+1. `Communication.java:` A class that facilitates interaction with the user by providing a menu and handling user input.
+2. `Statistic.java:` A class for analysing text and collecting statistics to determine the state of the text
+3. `FrequencyAnalyzer.java:` A class that provides methods for decrypting text based on frequency analysis of characters.
+4. `Encrypt.java:` A class for encrypting text using an encryption key.
+5. `Decrypt.java:` A class for decrypting text using a decryption key.
+6. `BruteForce.java:` A class for decoding text without using a key. The class enumerates the keys and then does a check using statistical analysis whether the text is decrypted or not.
+7. `DataPath.java:` A class that manages file paths and encryption/decryption keys.
+8. `StaticSymbols.java:` A class containing static symbols and methods for working with them.
+9. `IOData:` A class that is responsible for writing or reading data from a file
 
 
-В примерчике (лежит в пакете khmelov) есть три режима, вам можно сделать только один.
-Также там есть и тексты, на которых я буду проверять ваше решение (папка */text*)
+### **_Modes:_**
+1. Encrypt - encrypts the text from the input file to the output file. 
+2. Decrypt - decrypts the text from the input file to the output file. 
+3. BruteForce - decrypts the text without using key.
+4. Analyze - decrypts the text using statistics and analysis
+5. Exit - finish the program
 
-**Режимы:**
 
-1. Консольный интерактивный (предполагается как основной)
-2. Командной строки (используется PicoCLI)
-3. Swing (в JavaFX можно те же принципы использовать)
-
-Более-менее разбито все на слои и, повторюсь, именно этот пример разбирается на сайте JRU.
-Что я не стал делать:
-- карту параметров приложения
-- слой данных
-- многоязычность
-- и т. д.
-  
-Но до всего этого мы еще конечно дойдем.
-
-Я сделал проект на основе maven, но зачем? Мы же его не проходили!
-
-Если вдруг кому-то захочется поменять зависимости и "пилить" на Spring или JavaFX - никаких проблем.
-Но только тогда, когда будете сдавать предупредите меня, чтобы я завел для вас отдельную ветку в репозитории.
-Кто ничего из этого не понял, просто делаем свое решение в своем пакете. Как потом его сдавать я расскажу и покажу.
-
-_Ментор JRU Александр Хмелев._
+***More detailed documentation is written in each of the programme classes.*** 
